@@ -6,7 +6,7 @@ define([
 ], function ($, _, Backbone, markdown_editor_tpl) {
     var View = Backbone.View.extend({
         tagName: "div",
-        className: "markdown_editor_cache",
+        className: "markdown_editor",
         initialize: function () {
             var base = this;
             base.events = $.extend({}, Backbone.Events);
@@ -53,7 +53,6 @@ define([
                 var elt = $(this);
 
 
-
                 timer = setTimeout(function () {
                     var text = elt.val();
                     base.$el.find(".result").html(
@@ -74,11 +73,25 @@ define([
         },
         show: function () {
             var base = this;
-            $("body").append(base.$el);
+            var div = $(document.createElement("div"));
+            div.addClass("markdown_editor_cache");
+            div.append(base.$el);
+            $("body").append(div);
         },
         hide: function () {
             var base = this;
             base.$el.remove();
+        },
+        setTitle: function (title) {
+            var base = this;
+            base.$el.find('.editor_title').html(title);
+        },
+        setContent: function (content) {
+            var base = this;
+            base.$el.find("textarea").html(content);
+            base.$el.find(".result").html(
+                SmartBlocks.Blocks.Markdown.Main.convertToHTML(content)
+            );
         },
         addAction: function (name, callback) {
             var base = this;

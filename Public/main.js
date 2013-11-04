@@ -16,6 +16,9 @@ define([
             editor.init();
             return editor;
         },
+        getEditor: function () {
+            return new EditorView();
+        },
         convertToHTML: function (text) {
             return (Markdown.toHTML(text));
         }
