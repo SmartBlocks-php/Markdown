@@ -1,8 +1,9 @@
 @import "apps/markdown_editor/style/markdown_editor";
 
 .markdown_exported {
-  p {
-
+  p:nth-of-type(1) {
+    padding: 0;
+    margin-top: 0;
   }
 
   em {
@@ -21,5 +22,10 @@
     padding-top: 5px;
     padding-bottom: 5px;
     margin: 0;
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
   }
 }

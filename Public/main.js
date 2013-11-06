@@ -20,7 +20,11 @@ define([
             return new EditorView();
         },
         convertToHTML: function (text) {
-            return (Markdown.toHTML(text));
+            if (text) {
+                return (Markdown.toHTML(text));
+            } else {
+                return "";
+            }
         }
     };
 

@@ -10,6 +10,7 @@ define([
         initialize: function () {
             var base = this;
             base.events = $.extend({}, Backbone.Events);
+            base.original_value = "";
         },
         init: function () {
             var base = this;
@@ -59,7 +60,16 @@ define([
                         SmartBlocks.Blocks.Markdown.Main.convertToHTML(text)
                     );
                 }, 100);
+
+
+                base.events.trigger('changed');
+
             });
+        },
+        hasChanged: function () {
+            var base = this;
+            var elt = base.$el.find('textarea');
+            return elt.val() != base.original_value;
         },
         getMarkdown: function () {
             var base = this
@@ -82,16 +92,14 @@ define([
             var base = this;
             base.$el.remove();
         },
-        setTitle: function (title) {
-            var base = this;
-            base.$el.find('.editor_title').html(title);
-        },
+
         setContent: function (content) {
             var base = this;
             base.$el.find("textarea").html(content);
             base.$el.find(".result").html(
                 SmartBlocks.Blocks.Markdown.Main.convertToHTML(content)
             );
+            base.original_value = content;
         },
         addAction: function (name, callback) {
             var base = this;
