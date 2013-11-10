@@ -9,26 +9,29 @@
     margin: auto;
     margin-top: 100px;
     width: 75%;
-    height: ~"calc(100% - 300px)";
+    height: 100%;
   }
 }
 .markdown_editor {
   margin: auto;
-  height: ~"calc(100% - 100px)";
-
+  height: 100%;
+  position: relative;
   textarea {
     display: inline-block;
-    width: ~"calc(50% - 46px)";
+    width:50%;
     padding: 10px;
-    height: ~"calc(100% - 81px)";
     resize: none;
+    position: absolute;
+    top: 0;
+    bottom: 4px;
   }
 
   .result {
+    margin-left: 50%;
     display: inline-block;
-    width: ~"calc(50% - 48px)";
+    width:50%;
     line-height: 1.3em;
-    height: ~"calc(100% - 81px)";
+    height: 100%;
     padding: 10px;
     border: 1px grey solid;
     overflow: auto;
